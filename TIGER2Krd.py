@@ -11,13 +11,11 @@ def splitPoint(point):
     value.append(float(point[9:])/1000000)
     return value
 
-
-
-# read data from RT2 file and store in dictionary
+# read data from RT2 file and store in dictionary. RT2 file stored the turning point of the lines in RT1
 # key: numbers start with 7;
 # value: geo location
 def readRT2toDic():
-    f = open('TGR48001.RT2','r')
+    f = open('*****/Tiger/rd_2ktiger/TX/TGR48001.RT2','r')
     RT2_dic = {}
     for line in f:
         line = line.strip()
@@ -34,12 +32,13 @@ def readRT2toDic():
     return RT2_dic
     
 
-# read data from RT1 file and store in an array
+
+# read data from RT1 file and store in an array. RT1 file stores the types, starting coordination, and ending coordination of lines
 def readRT1toArray():
     # load RT2 to dictionary
     RT2_dic = readRT2toDic()
     
-    f = open('TGR48001.RT1','r')
+    f = open('*****/Tiger/rd_2ktiger/TX/TGR48001.RT1','r')
     feature_info = [];
     for line in f:
         line = line.strip()
