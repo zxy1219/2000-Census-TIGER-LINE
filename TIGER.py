@@ -44,13 +44,13 @@ def readRT1toArray():
     for line in f:
         line = line.strip()
         columns = line.split()
-        roadName = columns[3]
+        linetype = line[55:58]
         startPoint = columns[-2]
         endPoint = columns[-1]
         ref = columns[1]    # number starts with 7
 
         #if road name starts with 'A'
-        if(roadName[0]== 'A'):
+        if(linetype[0]== 'A'):
             temp = [];
 
             # add start point
@@ -86,7 +86,7 @@ if __name__ == "__main__":
                 arcpy.Array([arcpy.Point(*coords) for coords in feature])))
 
     # Persist a copy of the Polyline objects using CopyFeatures
-    arcpy.CopyFeatures_management(features, "C:/Users/xzhang10/Desktop/Infill/Ozone/Tiger/rd_2ktiger/TX/polylines2.shp")
+    arcpy.CopyFeatures_management(features, "*****/Tiger/rd_2ktiger/TX/polylines2.shp")
 
 
 
