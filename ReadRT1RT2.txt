@@ -2,12 +2,7 @@ import re
 
 import arcpy
 
-
-
-
 __author__ = 'liurl1221@gmail.com'
-
-
 
 # split the point
 
@@ -20,8 +15,6 @@ def splitPoint(point):
     value.append(float(point[9:])/1000000)
     
     return value
-
-
 
 # read data from RT2 file and store in dictionary. RT2 file stored the turning point of the lines in RT1
 
@@ -63,14 +56,9 @@ def readRT2toDic():
     return RT2_dic
        
 
-
-
-
 # read data from RT1 file and store in an array. RT1 file stores the types, starting coordination, and ending 
 
 coordination of lines
-
-   
 
 if __name__ == "__main__":
 
@@ -103,8 +91,6 @@ if __name__ == "__main__":
             
               temp = [];
 
-            
-
               # add start point
             
               a = splitPoint(startPoint)
@@ -121,21 +107,17 @@ if __name__ == "__main__":
                 
                   temp += tps
 
-            
 
               # add end point
             
               b = splitPoint(endPoint)
             
               temp.append(b)
-            
-            
+    
 
               feature_info.append(temp)
             
           
-
-
 
 __author__ = 'zxy1219@gmail.com'
 
@@ -153,3 +135,6 @@ for feature in feature_info:
 
 # Persist a copy of the Polyline objects using CopyFeatures
 arcpy.CopyFeatures_management(features, "**********/Tiger/rd_2ktiger/MA/polylines.shp")
+
+
+
