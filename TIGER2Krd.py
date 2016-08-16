@@ -11,13 +11,11 @@ def splitPoint(point):
     value.append(float(point[9:])/1000000)
     return value
 
-
-
-# read data from RT2 file and store in dictionary
+# read data from RT2 file and store in dictionary. RT2 file stored the turning point of the lines in RT1
 # key: numbers start with 7;
 # value: geo location
 def readRT2toDic():
-    f = open('TGR48001.RT2','r')
+    f = open('*****/Tiger/rd_2ktiger/TX/TGR48001.RT2','r')
     RT2_dic = {}
     for line in f:
         line = line.strip()
@@ -34,23 +32,24 @@ def readRT2toDic():
     return RT2_dic
     
 
-# read data from RT1 file and store in an array
+
+# read data from RT1 file and store in an array. RT1 file stores the types, starting coordination, and ending coordination of lines
 def readRT1toArray():
     # load RT2 to dictionary
     RT2_dic = readRT2toDic()
     
-    f = open('TGR48001.RT1','r')
+    f = open('*****/Tiger/rd_2ktiger/TX/TGR48001.RT1','r')
     feature_info = [];
     for line in f:
         line = line.strip()
         columns = line.split()
-        roadName = columns[3]
+        linetype = line[55:58]
         startPoint = columns[-2]
         endPoint = columns[-1]
         ref = columns[1]    # number starts with 7
 
         #if road name starts with 'A'
-        if(roadName[0]== 'A'):
+        if(linetype[0]== 'A'):
             temp = [];
 
             # add start point
@@ -86,7 +85,7 @@ if __name__ == "__main__":
                 arcpy.Array([arcpy.Point(*coords) for coords in feature])))
 
     # Persist a copy of the Polyline objects using CopyFeatures
-    arcpy.CopyFeatures_management(features, "C:/Users/xzhang10/Desktop/Infill/Ozone/Tiger/rd_2ktiger/TX/polylines2.shp")
+    arcpy.CopyFeatures_management(features, "*****/Tiger/rd_2ktiger/TX/polylines2.shp")
 
 
 
