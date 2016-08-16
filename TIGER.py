@@ -67,7 +67,7 @@ def readRT1toArray():
             temp.append(b)
             
             feature_info.append(temp)
-            print(temp);
+    return feature_info
 
 
     
